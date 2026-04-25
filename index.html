@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elara — Intelligent Systems</title>
+  <meta name="description" content="Elara builds AI-powered applications that automate workflows, improve decisions, and scale your business.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Elara — Intelligent Systems">
+  <meta property="og:description" content="We build AI-powered applications that automate workflows, improve decisions, and scale your business.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="logo.svg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Elara — Intelligent Systems">
+  <meta name="twitter:description" content="We build AI-powered applications that automate workflows, improve decisions, and scale your business.">
 
   <link rel="icon" href="logo.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,35 +51,7 @@
       font-weight: 300;
       line-height: 1.6;
       overflow-x: hidden;
-      cursor: none;
     }
-
-    /* ── Custom cursor ─────────────────────────────── */
-    .cursor {
-      position: fixed;
-      width: 8px; height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease, width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
-      mix-blend-mode: screen;
-    }
-
-    .cursor-ring {
-      position: fixed;
-      width: 36px; height: 36px;
-      border: 1px solid rgba(201,168,76,0.4);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: left 0.12s ease, top 0.12s ease, width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
-    }
-
-    body:has(a:hover) .cursor { width: 12px; height: 12px; }
-    body:has(a:hover) .cursor-ring { width: 48px; height: 48px; border-color: rgba(201,168,76,0.7); }
 
     /* ── Noise texture overlay ─────────────────────── */
     body::before {
@@ -191,6 +175,35 @@
       background: var(--accent);
       color: var(--bg);
       border-color: var(--accent);
+    }
+
+    /* ── Mobile menu toggle ────────────────────────── */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 210;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+      margin: 5px 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle.active span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
     }
 
     /* ── Hero ──────────────────────────────────────── */
@@ -475,57 +488,76 @@
       line-height: 1.85;
     }
 
-    /* ── Stats ─────────────────────────────────────── */
-    .stats-band {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 0;
+    /* ── Process ───────────────────────────────────── */
+    .process {
+      padding: 8rem 0 7rem;
     }
 
-    .stats-grid {
+    .process-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
     }
 
-    .stat-cell {
-      padding: 4.5rem 0;
-      text-align: center;
-      border-right: 1px solid var(--border);
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+    .process-step {
+      padding: 2.5rem 2rem;
+      border-left: 1px solid var(--border);
       position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .stat-cell:last-child { border-right: none; }
+    .process-step:first-child { border-left: none; }
 
-    .stat-cell.visible {
+    .process-step.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .stat-val {
-      font-family: var(--font-display);
-      font-size: clamp(3.5rem, 6vw, 5.5rem);
-      font-weight: 300;
-      letter-spacing: -0.04em;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 0.625rem;
-    }
-
-    .stat-val sup {
-      font-size: 0.45em;
-      color: var(--accent);
-      vertical-align: super;
-    }
-
-    .stat-label {
+    .process-num {
       font-family: var(--font-mono);
       font-size: 0.6875rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+    }
+
+    .process-title {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.5rem;
+      color: var(--text);
+      margin-bottom: 0.875rem;
+      letter-spacing: -0.01em;
+    }
+
+    .process-desc {
+      font-size: 0.875rem;
       color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ── About ─────────────────────────────────────── */
+    .about {
+      padding: 8rem 0 7rem;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .about-text p + p {
+      margin-top: 1.5rem;
     }
 
     /* ── CTA ───────────────────────────────────────── */
@@ -586,6 +618,10 @@
       color: var(--muted);
       font-size: 1rem;
       margin-bottom: 3.25rem;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.75;
     }
 
     .cta-btn {
@@ -671,6 +707,27 @@
     /* ── Responsive ────────────────────────────────── */
     @media (max-width: 900px) {
       .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-toggle { display: block; }
+
+      /* Mobile menu overlay */
+      .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 9, 8, 0.96);
+        backdrop-filter: blur(20px);
+        z-index: 200;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+      }
+
+      .nav-links.mobile-open a {
+        font-size: 1rem;
+        color: var(--text);
+      }
 
       .feature-row {
         grid-template-columns: 1fr;
@@ -678,23 +735,27 @@
       }
 
       .f-num { display: none; }
-
       .hero-circle { display: none; }
-    }
 
-    @media (max-width: 640px) {
-      .stats-grid {
+      .process-grid {
         grid-template-columns: 1fr;
       }
 
-      .stat-cell {
-        border-right: none;
+      .process-step {
+        border-left: none;
         border-bottom: 1px solid var(--border);
-        padding: 3rem 0;
+        padding: 2rem 0;
       }
 
-      .stat-cell:last-child { border-bottom: none; }
+      .process-step:last-child { border-bottom: none; }
 
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
       .footer-inner {
         flex-direction: column;
         gap: 1.25rem;
@@ -707,10 +768,6 @@
 </head>
 <body>
 
-  <!-- Custom cursor -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursor-ring"></div>
-
   <!-- Star canvas -->
   <canvas id="stars-canvas"></canvas>
 
@@ -721,11 +778,18 @@
         <img src="logo.svg" alt="Elara">
         <span class="nav-logo-text">Elara</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="#capabilities">Capabilities</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#capabilities" onclick="closeMenu()">Capabilities</a></li>
+        <li><a href="#process" onclick="closeMenu()">Process</a></li>
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
       </ul>
-      <a href="#contact" class="nav-cta">Engage</a>
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
@@ -751,7 +815,7 @@
       </p>
 
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Get Started</a>
+        <a href="#contact" class="btn-primary">Get in Touch</a>
         <a href="#capabilities" class="btn-ghost">
           View Capabilities
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -783,7 +847,7 @@
         <div class="feature-row">
           <span class="f-num">01</span>
           <h3 class="f-title"><em>AI</em> Automation</h3>
-          <p class="f-desc">Automate repetitive processes using intelligent systems that learn and adapt — freeing your team to focus on work that demands human judgment.</p>
+          <p class="f-desc">Automate repetitive processes using intelligent systems that learn and adapt, freeing your team to focus on work that demands human judgment.</p>
         </div>
 
         <div class="feature-row">
@@ -795,42 +859,82 @@
         <div class="feature-row">
           <span class="f-num">03</span>
           <h3 class="f-title"><em>Scalable</em> Systems</h3>
-          <p class="f-desc">Infrastructure designed for scale — observable, resilient, and built to grow with your business without losing fidelity or reliability.</p>
+          <p class="f-desc">Infrastructure designed for scale, observable, resilient, and built to grow with your business without losing fidelity or reliability.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Stats -->
-  <div class="stats-band">
+  <hr class="divider">
+
+  <!-- Process -->
+  <section id="process" class="process">
     <div class="container">
-      <div class="stats-grid">
-        <div class="stat-cell">
-          <div class="stat-val">10<sup>×</sup></div>
-          <div class="stat-label">Faster Workflows</div>
+      <div class="section-meta">
+        <span class="section-tag">02 / Process</span>
+        <h2 class="section-heading">How we work</h2>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <h3 class="process-title">Discovery</h3>
+          <p class="process-desc">We map your workflows, data, and goals to identify where AI creates the most leverage for your business.</p>
         </div>
-        <div class="stat-cell">
-          <div class="stat-val">99<sup>%</sup></div>
-          <div class="stat-label">System Uptime</div>
+
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <h3 class="process-title">Prototype</h3>
+          <p class="process-desc">A working proof of concept in weeks, not months. You validate the approach before committing to a full build.</p>
         </div>
-        <div class="stat-cell">
-          <div class="stat-val">∞</div>
-          <div class="stat-label">Scalability</div>
+
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <h3 class="process-title">Build</h3>
+          <p class="process-desc">Production-grade engineering with observability, testing, and deployment pipelines built in from day one.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <h3 class="process-title">Evolve</h3>
+          <p class="process-desc">Systems that learn and improve over time. We monitor performance and iterate based on real-world usage.</p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-meta">
+        <span class="section-tag">03 / About</span>
+        <h2 class="section-heading">Who we are</h2>
+      </div>
+
+      <div class="about-layout">
+        <div>
+          <h3 class="f-title">Engineers who <em>ship.</em></h3>
+        </div>
+        <div class="about-text">
+          <p>Elara is a small, focused team of engineers and builders. We specialize in turning complex AI capabilities into reliable, production-ready systems that solve real problems.</p>
+          <p>We work best with teams who have a clear problem and want a working solution, not a slide deck. Every engagement starts with understanding your constraints and ends with software running in production.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- CTA -->
   <section id="contact" class="cta-section">
     <div class="cta-watermark" aria-hidden="true">ELARA</div>
     <div class="container cta-inner">
-      <p class="cta-tag">02 / Contact</p>
+      <p class="cta-tag">04 / Contact</p>
       <h2 class="cta-heading">
-        Ready to build<br>with <em>AI?</em>
+        Let's build<br>something <em>real.</em>
       </h2>
-      <p class="cta-sub">Start your journey with Elara today.</p>
-      <a href="mailto:ai.elara@proton.me" class="cta-btn">Contact Us</a>
+      <p class="cta-sub">Tell us what you're working on. We'll respond within 48 hours with an honest assessment of whether we can help.</p>
+      <a href="mailto:ai.elara@proton.me" class="cta-btn">ai.elara@proton.me</a>
     </div>
   </section>
 
@@ -841,49 +945,35 @@
         <a href="#" class="footer-brand">Elara</a>
         <ul class="footer-links">
           <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <p class="footer-copy">© 2026 Elara. All rights reserved.</p>
+        <p class="footer-copy">&copy; 2026 Elara. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
   <script>
-    // ── Custom cursor ────────────────────────────────
-    const cursor     = document.getElementById('cursor');
-    const cursorRing = document.getElementById('cursor-ring');
-    let mx = -100, my = -100;
-    let rx = -100, ry = -100;
-
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.left = mx + 'px';
-      cursor.style.top  = my + 'px';
-    });
-
-    (function animRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      cursorRing.style.left = rx + 'px';
-      cursorRing.style.top  = ry + 'px';
-      requestAnimationFrame(animRing);
-    })();
-
-    document.addEventListener('mouseleave', () => {
-      cursor.style.opacity = '0';
-      cursorRing.style.opacity = '0';
-    });
-
-    document.addEventListener('mouseenter', () => {
-      cursor.style.opacity = '1';
-      cursorRing.style.opacity = '1';
-    });
-
     // ── Navigation scroll state ──────────────────────
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
+
+    // ── Mobile menu ──────────────────────────────────
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks  = document.getElementById('nav-links');
+
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('mobile-open');
+    });
+
+    function closeMenu() {
+      navToggle.classList.remove('active');
+      navLinks.classList.remove('mobile-open');
+    }
 
     // ── Stars canvas ─────────────────────────────────
     const canvas = document.getElementById('stars-canvas');
@@ -944,7 +1034,7 @@
       revealObserver.observe(el);
     });
 
-    document.querySelectorAll('.stat-cell').forEach((el, i) => {
+    document.querySelectorAll('.process-step').forEach((el, i) => {
       el.dataset.delay = i * 90;
       revealObserver.observe(el);
     });
