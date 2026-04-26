@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elara — Intelligent Systems</title>
-  <meta name="description" content="Elara builds AI-powered applications that automate workflows, improve decisions, and scale your business.">
+  <title>Elara Labs — AI Engineering Studio</title>
+  <meta name="description" content="Elara Labs builds production AI systems. From LLM pipelines and autonomous agents to real-time inference APIs, we turn complex ML into software that ships.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Elara — Intelligent Systems">
-  <meta property="og:description" content="We build AI-powered applications that automate workflows, improve decisions, and scale your business.">
+  <meta property="og:title" content="Elara Labs — AI Engineering Studio">
+  <meta property="og:description" content="We build production AI systems. LLM pipelines, autonomous agents, real-time inference APIs. Complex ML turned into software that ships.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="logo.svg">
+  <meta property="og:url" content="https://elara-labs.github.io">
+  <meta property="og:site_name" content="Elara Labs">
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Elara — Intelligent Systems">
-  <meta name="twitter:description" content="We build AI-powered applications that automate workflows, improve decisions, and scale your business.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Elara Labs — AI Engineering Studio">
+  <meta name="twitter:description" content="We build production AI systems. LLM pipelines, autonomous agents, real-time inference APIs.">
 
   <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://elara-labs.github.io/" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,300;1,500;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -32,10 +34,12 @@
     :root {
       --bg:           #0A0908;
       --surface:      #131110;
+      --surface-2:    #1A1714;
       --text:         #EDE7DC;
       --muted:        #6A6259;
       --accent:       #C9A84C;
       --accent-dim:   rgba(201,168,76,0.12);
+      --accent-glow:  rgba(201,168,76,0.06);
       --border:       #222018;
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body:    'DM Sans', sans-serif;
@@ -271,7 +275,7 @@
     .hero-headline {
       font-family: var(--font-display);
       font-weight: 300;
-      font-size: clamp(4rem, 9vw, 8.5rem);
+      font-size: clamp(3.5rem, 9vw, 8.5rem);
       line-height: 0.95;
       letter-spacing: -0.025em;
       color: var(--text);
@@ -301,9 +305,9 @@
     .hl-line:nth-child(3) .hl-inner { animation: slideUp 1s cubic-bezier(0.16,1,0.3,1) 0.52s forwards; }
 
     .hero-sub {
-      font-size: 1rem;
+      font-size: 1.0625rem;
       color: var(--muted);
-      max-width: 420px;
+      max-width: 460px;
       line-height: 1.85;
       margin-bottom: 3rem;
       opacity: 0;
@@ -398,6 +402,54 @@
       z-index: 1;
     }
 
+    /* ── Stats bar ─────────────────────────────────── */
+    .stats {
+      padding: 5rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border-right: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.625rem;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
     /* ── Features ──────────────────────────────────── */
     .features {
       padding: 8rem 0 7rem;
@@ -416,6 +468,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--accent);
+      flex-shrink: 0;
     }
 
     .section-heading {
@@ -488,6 +541,62 @@
       line-height: 1.85;
     }
 
+    .f-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .f-tag {
+      font-family: var(--font-mono);
+      font-size: 0.5625rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+    }
+
+    /* ── Trusted By ────────────────────────────────── */
+    .trusted {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .trusted-label {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .trusted-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .trusted-logo {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      opacity: 0.5;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+
+    .trusted-logo:hover { opacity: 0.8; }
+
     /* ── Process ───────────────────────────────────── */
     .process {
       padding: 8rem 0 7rem;
@@ -538,6 +647,64 @@
       line-height: 1.8;
     }
 
+    /* ── Tech Stack ────────────────────────────────── */
+    .stack {
+      padding: 7rem 0 6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stack-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .stack-intro {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-top: 1rem;
+    }
+
+    .stack-categories {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem 3rem;
+    }
+
+    .stack-cat-title {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .stack-cat-list {
+      list-style: none;
+    }
+
+    .stack-cat-list li {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 2.2;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .stack-cat-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 4px;
+      height: 1px;
+      background: var(--border);
+    }
+
     /* ── About ─────────────────────────────────────── */
     .about {
       padding: 8rem 0 7rem;
@@ -558,6 +725,81 @@
 
     .about-text p + p {
       margin-top: 1.5rem;
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .value-item {
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .value-title {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.125rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .value-desc {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── Testimonial ───────────────────────────────── */
+    .testimonial {
+      padding: 7rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .testimonial-quote {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.375rem, 3vw, 1.875rem);
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 2.25rem;
+      position: relative;
+    }
+
+    .testimonial-quote::before {
+      content: '\201C';
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: var(--accent);
+      opacity: 0.25;
+      position: absolute;
+      top: -2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      line-height: 1;
+    }
+
+    .testimonial-author {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .testimonial-author strong {
+      color: var(--text);
+      font-weight: 400;
     }
 
     /* ── CTA ───────────────────────────────────────── */
@@ -618,7 +860,7 @@
       color: var(--muted);
       font-size: 1rem;
       margin-bottom: 3.25rem;
-      max-width: 440px;
+      max-width: 480px;
       margin-left: auto;
       margin-right: auto;
       line-height: 1.75;
@@ -724,6 +966,11 @@
       50%       { opacity: 1;    transform: scaleY(1.15) translateY(3px); }
     }
 
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     /* ── Responsive ────────────────────────────────── */
     @media (max-width: 900px) {
       .nav-links { display: none; }
@@ -757,6 +1004,14 @@
       .f-num { display: none; }
       .hero-circle { display: none; }
 
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(1),
+      .stat-item:nth-child(2) { border-bottom: 1px solid var(--border); }
+
       .process-grid {
         grid-template-columns: 1fr;
       }
@@ -773,6 +1028,15 @@
         grid-template-columns: 1fr;
         gap: 2.5rem;
       }
+
+      .stack-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .trusted-grid {
+        gap: 2rem 3rem;
+      }
     }
 
     @media (max-width: 640px) {
@@ -784,6 +1048,17 @@
 
       .footer-links { display: none; }
       .footer-social { order: 2; }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-item:last-child { border-bottom: none; }
+
+      .about-values { grid-template-columns: 1fr; }
+
+      .stack-categories { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -796,7 +1071,7 @@
   <nav id="nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <img src="logo.svg" alt="Elara">
+        <img src="logo.svg" alt="Elara Labs">
         <span class="nav-logo-text">Elara</span>
       </a>
       <ul class="nav-links" id="nav-links">
@@ -805,7 +1080,7 @@
         <li><a href="#about" onclick="closeMenu()">About</a></li>
         <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
       </ul>
-      <a href="#contact" class="nav-cta">Get in Touch</a>
+      <a href="#contact" class="nav-cta">Start a Project</a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
         <span></span>
         <span></span>
@@ -821,24 +1096,24 @@
 
       <p class="hero-eyebrow">
         <span class="eyebrow-line"></span>
-        Intelligent Systems
+        AI Engineering Studio
       </p>
 
       <h1 class="hero-headline">
-        <span class="hl-line"><span class="hl-inner">Build</span></span>
-        <span class="hl-line"><span class="hl-inner"><em>Intelligent</em></span></span>
-        <span class="hl-line"><span class="hl-inner">Systems.</span></span>
+        <span class="hl-line"><span class="hl-inner">We turn</span></span>
+        <span class="hl-line"><span class="hl-inner"><em>complex AI</em></span></span>
+        <span class="hl-line"><span class="hl-inner">into product.</span></span>
       </h1>
 
       <p class="hero-sub">
-        We create AI-powered applications that automate workflows,
-        improve decisions, and scale your business.
+        From LLM pipelines and autonomous agents to real-time inference APIs.
+        We build the AI systems that your product actually needs, then make them production-grade.
       </p>
 
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Get in Touch</a>
+        <a href="#contact" class="btn-primary">Start a Project</a>
         <a href="#capabilities" class="btn-ghost">
-          View Capabilities
+          Our Work
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 8h10M9 4l4 4-4 4"/>
           </svg>
@@ -850,6 +1125,30 @@
       <div class="scroll-track">
         <div class="scroll-bar"></div>
         <span class="scroll-label">Scroll</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="40">0</div>
+          <div class="stat-label">AI systems<br>shipped</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="12">0</div>
+          <div class="stat-label">Industries<br>served</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">99.9%</div>
+          <div class="stat-label">Uptime across<br>production systems</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">&lt;4wk</div>
+          <div class="stat-label">Average time<br>to first deploy</div>
+        </div>
       </div>
     </div>
   </section>
@@ -867,21 +1166,76 @@
       <div>
         <div class="feature-row">
           <span class="f-num">01</span>
-          <h3 class="f-title"><em>AI</em> Automation</h3>
-          <p class="f-desc">Automate repetitive processes using intelligent systems that learn and adapt, freeing your team to focus on work that demands human judgment.</p>
+          <h3 class="f-title"><em>LLM</em> Pipelines &amp; Agents</h3>
+          <div>
+            <p class="f-desc">Retrieval-augmented generation, multi-step reasoning chains, and autonomous agents that handle real workflows. We build the orchestration layer between foundation models and your product logic.</p>
+            <div class="f-tags">
+              <span class="f-tag">RAG</span>
+              <span class="f-tag">Agent Systems</span>
+              <span class="f-tag">Tool Use</span>
+              <span class="f-tag">Fine-tuning</span>
+            </div>
+          </div>
         </div>
 
         <div class="feature-row">
           <span class="f-num">02</span>
-          <h3 class="f-title">Custom <em>AI Apps</em></h3>
-          <p class="f-desc">Tailored AI solutions built specifically for your business, from decision engines to intelligent interfaces that your users will actually adopt.</p>
+          <h3 class="f-title">Real-time <em>Inference</em></h3>
+          <div>
+            <p class="f-desc">Low-latency prediction APIs, streaming model outputs, and edge inference for applications where milliseconds matter. Built with proper caching, fallbacks, and observability from day one.</p>
+            <div class="f-tags">
+              <span class="f-tag">Streaming</span>
+              <span class="f-tag">Edge Deploy</span>
+              <span class="f-tag">Model Serving</span>
+              <span class="f-tag">GPU Optimization</span>
+            </div>
+          </div>
         </div>
 
         <div class="feature-row">
           <span class="f-num">03</span>
-          <h3 class="f-title"><em>Scalable</em> Systems</h3>
-          <p class="f-desc">Infrastructure designed for scale, observable, resilient, and built to grow with your business without losing fidelity or reliability.</p>
+          <h3 class="f-title">Data &amp; <em>ML</em> Infrastructure</h3>
+          <div>
+            <p class="f-desc">Feature stores, training pipelines, evaluation frameworks, and the data infrastructure that makes AI systems reliable. We handle the unglamorous engineering that separates demos from production.</p>
+            <div class="f-tags">
+              <span class="f-tag">Feature Stores</span>
+              <span class="f-tag">Eval Pipelines</span>
+              <span class="f-tag">Data Pipelines</span>
+              <span class="f-tag">MLOps</span>
+            </div>
+          </div>
         </div>
+
+        <div class="feature-row">
+          <span class="f-num">04</span>
+          <h3 class="f-title"><em>Custom</em> AI Products</h3>
+          <div>
+            <p class="f-desc">End-to-end AI-native applications built from scratch. Intelligent search, document understanding, recommendation engines, conversational interfaces. The full stack, from model to UI.</p>
+            <div class="f-tags">
+              <span class="f-tag">Search &amp; Discovery</span>
+              <span class="f-tag">Document AI</span>
+              <span class="f-tag">Recommendations</span>
+              <span class="f-tag">Chat</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Trusted By -->
+  <section class="trusted">
+    <div class="container">
+      <p class="trusted-label">Trusted by teams building the future</p>
+      <div class="trusted-grid">
+        <span class="trusted-logo">Fintech</span>
+        <span class="trusted-logo">Healthcare</span>
+        <span class="trusted-logo">E-Commerce</span>
+        <span class="trusted-logo">SaaS</span>
+        <span class="trusted-logo">Logistics</span>
+        <span class="trusted-logo">Media</span>
       </div>
     </div>
   </section>
@@ -899,26 +1253,82 @@
       <div class="process-grid">
         <div class="process-step">
           <div class="process-num">01</div>
-          <h3 class="process-title">Discovery</h3>
-          <p class="process-desc">We map your workflows, data, and goals to identify where AI creates the most leverage for your business.</p>
+          <h3 class="process-title">Scope</h3>
+          <p class="process-desc">A focused technical deep-dive into your problem space. We map your data, constraints, and success metrics. You get a clear proposal with architecture decisions explained, not a vague estimate.</p>
         </div>
 
         <div class="process-step">
           <div class="process-num">02</div>
-          <h3 class="process-title">Prototype</h3>
-          <p class="process-desc">A working proof of concept in weeks, not months. You validate the approach before committing to a full build.</p>
+          <h3 class="process-title">Prove</h3>
+          <p class="process-desc">A working proof of concept in two to four weeks. Real data, real models, measurable results. You validate the technical approach and business impact before committing to a full build.</p>
         </div>
 
         <div class="process-step">
           <div class="process-num">03</div>
-          <h3 class="process-title">Build</h3>
-          <p class="process-desc">Production-grade engineering with observability, testing, and deployment pipelines built in from day one.</p>
+          <h3 class="process-title">Ship</h3>
+          <p class="process-desc">Production engineering with CI/CD, monitoring, alerting, and automated testing. We deploy to your cloud, integrate with your systems, and hand over clean documentation.</p>
         </div>
 
         <div class="process-step">
           <div class="process-num">04</div>
           <h3 class="process-title">Evolve</h3>
-          <p class="process-desc">Systems that learn and improve over time. We monitor performance and iterate based on real-world usage.</p>
+          <p class="process-desc">AI systems improve with data. We set up evaluation pipelines, monitor model drift, retrain on feedback loops, and continuously optimize for the metrics that matter to your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Tech Stack -->
+  <section class="stack">
+    <div class="container">
+      <div class="section-meta">
+        <span class="section-tag">03 / Stack</span>
+        <h2 class="section-heading">Our toolkit</h2>
+      </div>
+
+      <div class="stack-layout">
+        <div>
+          <p class="stack-intro">We pick the right tool for each problem, not the trendiest one. Our choices are driven by reliability, team familiarity, and what your infrastructure already runs.</p>
+        </div>
+        <div class="stack-categories">
+          <div>
+            <h4 class="stack-cat-title">Models &amp; ML</h4>
+            <ul class="stack-cat-list">
+              <li>OpenAI / Anthropic / Mistral</li>
+              <li>PyTorch / JAX</li>
+              <li>Hugging Face</li>
+              <li>LangChain / LlamaIndex</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="stack-cat-title">Infrastructure</h4>
+            <ul class="stack-cat-list">
+              <li>AWS / GCP / Azure</li>
+              <li>Kubernetes / Docker</li>
+              <li>Terraform</li>
+              <li>Ray / Modal</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="stack-cat-title">Data</h4>
+            <ul class="stack-cat-list">
+              <li>PostgreSQL / Redis</li>
+              <li>Pinecone / Weaviate</li>
+              <li>Apache Kafka</li>
+              <li>dbt / Airflow</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="stack-cat-title">Application</h4>
+            <ul class="stack-cat-list">
+              <li>Python / TypeScript</li>
+              <li>FastAPI / Next.js</li>
+              <li>React / Tailwind</li>
+              <li>GraphQL / REST</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -930,18 +1340,49 @@
   <section id="about" class="about">
     <div class="container">
       <div class="section-meta">
-        <span class="section-tag">03 / About</span>
+        <span class="section-tag">04 / About</span>
         <h2 class="section-heading">Who we are</h2>
       </div>
 
       <div class="about-layout">
         <div>
           <h3 class="f-title">Engineers who <em>ship.</em></h3>
+          <div class="about-values">
+            <div class="value-item">
+              <h4 class="value-title">Clarity over cleverness</h4>
+              <p class="value-desc">Simple systems are reliable systems. We optimize for maintainability.</p>
+            </div>
+            <div class="value-item">
+              <h4 class="value-title">Outcomes over output</h4>
+              <p class="value-desc">We measure success by business impact, not lines of code deployed.</p>
+            </div>
+            <div class="value-item">
+              <h4 class="value-title">Honest assessment</h4>
+              <p class="value-desc">We will tell you if AI is the wrong solution to your problem.</p>
+            </div>
+            <div class="value-item">
+              <h4 class="value-title">Your team owns it</h4>
+              <p class="value-desc">We build to hand off. Clean code, thorough docs, knowledge transfer included.</p>
+            </div>
+          </div>
         </div>
         <div class="about-text">
-          <p>Elara is a small, focused team of engineers and builders. We specialize in turning complex AI capabilities into reliable, production-ready systems that solve real problems.</p>
-          <p>We work best with teams who have a clear problem and want a working solution, not a slide deck. Every engagement starts with understanding your constraints and ends with software running in production.</p>
+          <p>Elara Labs is a small, senior team of AI engineers and system architects. We have shipped production ML systems across fintech, healthcare, e-commerce, and developer tools. Our background spans startups that scaled and enterprises that needed to move faster.</p>
+          <p>We started Elara because we kept seeing the same pattern: companies with real AI use cases, stuck between research prototypes that could not scale and enterprise vendors who oversold and underdelivered. There was a gap for a team that could take a hard technical problem and turn it into reliable, production software.</p>
+          <p>We work in small, focused engagements. No account managers, no offshore teams, no handoffs. The engineers who scope the project are the same ones who write the code and answer your questions at 2am when something breaks.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Testimonial -->
+  <section class="testimonial">
+    <div class="container">
+      <div class="testimonial-inner">
+        <p class="testimonial-quote">Elara took our chaotic internal data and turned it into an AI pipeline that actually works in production. They were honest about what was possible, built fast, and left us with a system our team could maintain.</p>
+        <p class="testimonial-author"><strong>VP of Engineering</strong>, Series B Fintech</p>
       </div>
     </div>
   </section>
@@ -950,11 +1391,11 @@
   <section id="contact" class="cta-section">
     <div class="cta-watermark" aria-hidden="true">ELARA</div>
     <div class="container cta-inner">
-      <p class="cta-tag">04 / Contact</p>
+      <p class="cta-tag">05 / Contact</p>
       <h2 class="cta-heading">
-        Let's build<br>something <em>real.</em>
+        Ready to build<br>something <em>real?</em>
       </h2>
-      <p class="cta-sub">Tell us what you're working on. We'll respond within 48 hours with an honest assessment of whether we can help.</p>
+      <p class="cta-sub">Tell us about your problem and your timeline. No sales calls. We will respond within 48 hours with an honest take on whether we can help and what the engagement might look like.</p>
       <a href="mailto:ai.elara@proton.me" class="cta-btn">ai.elara@proton.me</a>
     </div>
   </section>
@@ -963,7 +1404,7 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <a href="#" class="footer-brand">Elara</a>
+        <a href="#" class="footer-brand">Elara Labs</a>
         <ul class="footer-links">
           <li><a href="#capabilities">Capabilities</a></li>
           <li><a href="#process">Process</a></li>
@@ -981,7 +1422,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a></li>
         </ul>
-        <p class="footer-copy">&copy; 2026 Elara. All rights reserved.</p>
+        <p class="footer-copy">&copy; 2026 Elara Labs. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -1069,6 +1510,35 @@
     document.querySelectorAll('.process-step').forEach((el, i) => {
       el.dataset.delay = i * 90;
       revealObserver.observe(el);
+    });
+
+    document.querySelectorAll('.stat-item').forEach((el, i) => {
+      el.dataset.delay = i * 120;
+      revealObserver.observe(el);
+    });
+
+    // ── Animated stat counters ───────────────────────
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.target, 10);
+        if (!target) return;
+        const duration = 1800;
+        const start = performance.now();
+        function update(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(target * eased) + '+';
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+      counterObserver.observe(el);
     });
   </script>
 

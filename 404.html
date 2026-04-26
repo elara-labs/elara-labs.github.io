@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Elara</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500&family=Space+Mono&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0A0908;
+      --surface: #131110;
+      --text: #EDE7DC;
+      --muted: #6A6259;
+      --accent: #C9A84C;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 480px;
+    }
+
+    .code {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: clamp(6rem, 15vw, 10rem);
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .message {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.125rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .home-link {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.875rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.75rem 2rem;
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      display: inline-block;
+    }
+
+    .home-link:hover {
+      background-color: var(--accent);
+      color: var(--bg);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="code">404</div>
+    <p class="message">This page has drifted beyond our orbit.</p>
+    <a href="/" class="home-link">Return Home</a>
+  </div>
+</body>
+</html>
