@@ -1,3 +1,11 @@
 User-agent: *
 Allow: /
+
+# Block crawling of non-content paths
+Disallow: /.git/
+
+# Sitemap
 Sitemap: https://elara-labs.github.io/sitemap.xml
+
+# Crawl delay for polite bots
+Crawl-delay: 1
